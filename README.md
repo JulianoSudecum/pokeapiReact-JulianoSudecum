@@ -1,1 +1,1 @@
-# pokeapiVue-JulianoSudecum
+# pokeapiReact-JulianoSudecum
