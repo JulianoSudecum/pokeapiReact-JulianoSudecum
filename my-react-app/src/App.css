@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+  padding: 0;
+  margin: 0;
+  max-width: 100vw;
+}
+
+.divContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pokemonList{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0;
+}
+
+@media(max-width:1024px){
+  .pokemonList{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media(max-width:768px){
+  .pokemonList{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width:536px){
+  .pokemonList{
+    grid-template-columns: 1fr;
+  }
+}
