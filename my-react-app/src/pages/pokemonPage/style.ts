@@ -59,10 +59,20 @@ flex-direction: column;
     padding: 1.5rem;
 
     > div{
+
+        h2{
+            margin: 0 auto;
+            padding-bottom: 15px;
+        }
+
         background-color: white;
         border-radius: 5px;
         border: 2px solid var(--grey-1);
         padding: 2rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
         text-align:center;
         transition: 0.5s;
@@ -80,14 +90,30 @@ flex-direction: column;
 
 .pokemonStats{
     display:flex;
-    flex-direction: column-reverse;
-    gap:0px;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap:5px;
     margin: 20px 0px;
+
 
 
     > p{
         padding: 0px;
         margin: 0px;
+    }
+}
+
+.divTextContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    img{
+        width: 25px;
     }
 }
 

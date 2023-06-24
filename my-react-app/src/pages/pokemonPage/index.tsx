@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react"
 import { IPokemon } from "../../providers/PokemonContext"
 import api from "../../service/api"
 import { StyledPokemonPage } from "./style"
-import { AiOutlineRollback } from "react-icons/ai"
+import { AiOutlineRollback, AiOutlineHeart } from "react-icons/ai"
+import { PiSwordDuotone, PiSwordBold } from "react-icons/pi"
 import { useNavigate } from "react-router-dom"
+import { GiWalkingBoot } from "react-icons/gi"
+import { BiShield, BiSolidShield } from "react-icons/bi"
+import { TbArrowBigRightLines } from "react-icons/tb"
+import { LuDna } from "react-icons/lu"
+
 
 interface IPokemonInfos{
     abilities: IAbilities[]
@@ -76,8 +82,6 @@ export const PokemonPage = () => {
         getPokemonInfos()
     }
 
-    console.log(pokemonInfos)
-
     const backToHome = () => {
         navigate("/")
     }
@@ -99,7 +103,10 @@ export const PokemonPage = () => {
                                     pokemonInfos ? (
                                         pokemonInfos.abilities.map((item)=>{
                                             return(
-                                                <p>{item.ability.name.toUpperCase()}</p>
+                                                <div className="divTextContainer">
+                                                    <img src="skill-development.png" alt="" />
+                                                    <p>{item.ability.name.toUpperCase()}</p>
+                                                </div>
                                             )
                                         })
                                     ) : (
@@ -114,7 +121,10 @@ export const PokemonPage = () => {
                                         pokemonInfos.moves.map((item,index)=>{
                                             if(index <= 5){
                                                 return(
-                                                    <p>{item.move.name.toUpperCase()}</p>
+                                                    <div className="divTextContainer">
+                                                        <GiWalkingBoot />
+                                                        <p>{item.move.name.toUpperCase()}</p>
+                                                    </div>
                                                 )
                                             }
                                         })
@@ -130,7 +140,49 @@ export const PokemonPage = () => {
                                         pokemonInfos.stats.map((item)=>{
                                             return(
                                                 <div className="pokemonStats">
-                                                    <p>{item.stat.name.toUpperCase()}</p>
+                                                    {
+                                                        item.stat.name == "hp" ? (
+                                                            <AiOutlineHeart />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    {
+                                                        item.stat.name == "attack" ? (
+                                                            <PiSwordDuotone />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    {
+                                                        item.stat.name == "defense" ? (
+                                                            <BiShield />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    {
+                                                        item.stat.name == "special-attack" ? (
+                                                            <PiSwordBold />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    {
+                                                        item.stat.name == "special-defense" ? (
+                                                            <BiSolidShield />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    {
+                                                        item.stat.name == "speed" ? (
+                                                            <TbArrowBigRightLines />
+                                                        ) : (
+                                                            <></>
+                                                        )
+                                                    }
+                                                    <p>{item.stat.name.toUpperCase()}: </p>
                                                     <p>{item.base_stat}</p>
                                                 </div>
                                             )
@@ -146,7 +198,10 @@ export const PokemonPage = () => {
                                     pokemonInfos ? (
                                         pokemonInfos.types.map((item)=>{
                                             return(
-                                                <p>{item.type.name.toUpperCase()}</p>
+                                                <div className="divTextContainer">
+                                                    <LuDna />
+                                                    <p>{item.type.name.toUpperCase()}</p>
+                                                </div>
                                             )
                                         })
                                     ) : (
