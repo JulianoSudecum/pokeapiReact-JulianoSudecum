@@ -1,38 +1,20 @@
-import { useContext, useEffect } from 'react'
 import React from "react"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
-import { PokemonContext } from './providers/PokemonContext'
-import { Pokemon } from './components/Pokemon'
-import { Header } from './components/Header'
+import { PokemonProvider } from "./providers/PokemonContext"
+import RouterMain from './routes'
+import { GlobalStyle } from './GlobalStyle';
 
 function App() {
-  const { pokemonList, pokemonRequest, filteredPokemons } = useContext(PokemonContext)
-
-  useEffect(()=> {
-    pokemonRequest()
-  },[])
-
-  return (
-    <div className='divContainer'>
-      <Header />
-      <ul className='pokemonList'>
-        {
-          !filteredPokemons.length ? (
-            pokemonList.map((pokemon, index) => {
-              return(
-                <Pokemon pokemon={pokemon} index={index} key={index}/>
-              )
-            })
-          ) : (
-            filteredPokemons.map((pokemon, index) => {
-              return(
-                <Pokemon pokemon={pokemon} index={index} key={index}/>
-              )
-            })
-          )
-        }
-      </ul>
-    </div>
+  return(
+    <>
+    <ToastContainer />
+      <PokemonProvider>
+        <RouterMain />
+      </PokemonProvider>
+    <GlobalStyle />
+    </>
   )
 }
 

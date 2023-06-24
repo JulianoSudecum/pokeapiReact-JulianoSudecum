@@ -62,8 +62,31 @@ export const StyledPokemon = styled.li`
         justify-content: space-between;
         gap:  20px;
 
+        width:100px;
+        height:100px;
+
         > img{
             width:30px;
+        }
+    }
+
+    .buttonPokemonInfo{
+        width:100%;
+        height:60px;
+
+        border:none;
+        border-radius:5px;
+
+        background-color: black;
+        color: white;
+
+        cursor: pointer;
+        transition: 0.5s;
+
+        margin-top: 20px;
+
+        :hover{
+            background-color: var(--color-primary);
         }
     }
 `

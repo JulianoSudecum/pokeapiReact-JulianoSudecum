@@ -29,8 +29,8 @@ export const PokemonProvider = ({children}: IPokemonProps) => {
 
     const pokemonRequest = async () => {
         try {
-            const request = await api.get("/pokemon")
-            setPokemonList(request.data.results)
+            const resp = await api.get("/pokemon")
+            setPokemonList(resp.data.results)
         } catch (error) {
             toast.error("Ocorreu um erro na coleta dos dados", {autoClose:3000, position: "bottom-right"})
         }

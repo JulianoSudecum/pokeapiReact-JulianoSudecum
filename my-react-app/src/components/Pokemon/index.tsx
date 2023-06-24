@@ -3,9 +3,10 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { useContext } from "react"
 import { toast } from "react-toastify"
-import { PokemonContext } from "../../providers/PokemonContext"
+import { IPokemon, PokemonContext } from "../../providers/PokemonContext"
 import api from "../../service/api"
 import { StyledPokemon } from "./style"
+import { useNavigate } from "react-router-dom";
 
 interface IPokemonType{
     name:string
@@ -20,12 +21,13 @@ interface IPokemonStats{
 export const Pokemon = ({pokemon, index}) => {
     let renderedPokemonDesc:boolean
 
+    const navigate = useNavigate()
     const { pokemonRequest } = useContext(PokemonContext)
     const [pokemonFullBody, setPokemonFullBody] = useState<any>([])
     const pokemonIndex = pokemon.url.slice(34,-1)
 
     useEffect(() => {
-        async function fetchPokemonStats() {
+        const fetchPokemonStats = async () => {
             if(!renderedPokemonDesc){
                 try {
                     const { data } = await api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`);
@@ -37,6 +39,11 @@ export const Pokemon = ({pokemon, index}) => {
         }
         fetchPokemonStats();
     }, [pokemonRequest]);
+
+    const redirectPage = (pokemon: IPokemon) => {
+        sessionStorage.setItem("@pokemonFocus", JSON.stringify(pokemon))
+        navigate("/pokemon")
+    }
 
     return(
         <StyledPokemon key={index}>
@@ -68,6 +75,7 @@ export const Pokemon = ({pokemon, index}) => {
                             }
                         })
                     }
+                    <button onClick={() => redirectPage(pokemon)} className="buttonPokemonInfo">Mais informações</button>
             </div>
         </StyledPokemon>
     )
