@@ -29,6 +29,8 @@ input, button{
     border: 2px solid var(--color-primary); 
     cursor: pointer;
     background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
     svg{
         color: white;
     }

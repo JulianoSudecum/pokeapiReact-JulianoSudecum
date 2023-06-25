@@ -10,14 +10,16 @@ import { BiShield, BiSolidShield } from "react-icons/bi"
 import { TbArrowBigRightLines } from "react-icons/tb"
 import { LuDna } from "react-icons/lu"
 
-
-interface IPokemonInfos{
+export interface IPokemonInfos{
     abilities: IAbilities[]
     moves: IMoves[]
     name: string
     species: IPokemon
     stats: IStats[]
     types: ITypes[]
+    id: number
+    weight: number
+    base_experience: number
 }
 
 interface IAbilities{
@@ -75,7 +77,6 @@ export const PokemonPage = () => {
         if(pokemon){
             const resp = await api.get(`/pokemon/${pokemon.url.slice(34,-1)}`)
             setPokemonInfos(resp.data)
-            console.log(resp.data)
         }
     }
     if(!pokemonInfos){

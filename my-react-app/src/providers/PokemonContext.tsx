@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { toast } from "react-toastify";
+import { IPokemonInfos } from "../pages/pokemonPage";
 import api from "../service/api";
 
 interface IPokemonProps{
@@ -11,8 +12,8 @@ interface IPokemonContext{
     pokemonRequest: () => Promise<void>
     filteredPokemons: IPokemon[]
     setFilteredPokemons: React.Dispatch<React.SetStateAction<IPokemon[]>>
-    pokemonFullBody: never[]
-    setPokemonFullBody: React.Dispatch<React.SetStateAction<never[]>>
+    pokemonFullBody: IPokemonInfos[]
+    setPokemonFullBody: React.Dispatch<React.SetStateAction<IPokemonInfos[]>>
 }
 
 export interface IPokemon{
@@ -25,7 +26,7 @@ export const PokemonContext = createContext({} as IPokemonContext)
 export const PokemonProvider = ({children}: IPokemonProps) => {
     const [pokemonList, setPokemonList] = useState<IPokemon[]>([])
     const [filteredPokemons, setFilteredPokemons] = useState<IPokemon[]>([])
-    const [pokemonFullBody, setPokemonFullBody] = useState([])
+    const [pokemonFullBody, setPokemonFullBody] = useState<IPokemonInfos[]>([])
 
     const pokemonRequest = async () => {
         try {

@@ -7,6 +7,7 @@ import { IPokemon, PokemonContext } from "../../providers/PokemonContext"
 import api from "../../service/api"
 import { StyledPokemon } from "./style"
 import { useNavigate } from "react-router-dom";
+import { IPokemonInfos } from "../../pages/pokemonPage"
 
 interface IPokemonType{
     name:string
@@ -23,8 +24,8 @@ export const Pokemon = ({pokemon, index}) => {
 
     const navigate = useNavigate()
     const { pokemonRequest } = useContext(PokemonContext)
-    const [pokemonFullBody, setPokemonFullBody] = useState<any>([])
-    const pokemonIndex = pokemon.url.slice(34,-1)
+    const [pokemonFullBody, setPokemonFullBody] = useState<IPokemonInfos[]>([])
+    const pokemonIndex:number = pokemon.url.slice(34,-1)
 
     useEffect(() => {
         const fetchPokemonStats = async () => {

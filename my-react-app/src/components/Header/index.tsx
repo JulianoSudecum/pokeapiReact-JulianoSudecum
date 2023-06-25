@@ -33,7 +33,7 @@ export const Header = () => {
             <SiPokemon className="pokemonHeaderLogo" size={150}/>
             <div className="divSearch">
                 <input onChange={(e) => inputChangeEvent(e.target.value)} type="text" />
-                <button onClick={() => searchPokemonClick()}><BiSearch /></button>
+                <button onClick={() => searchPokemonClick()}><BiSearch size={16} /></button>
             </div>
         </StyledHeader>
     )
